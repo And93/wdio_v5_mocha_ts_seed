@@ -1,4 +1,5 @@
 docker-compose -p reportportal up -d --force-recreate
+docker-compose -p reportportal stop
 
 http://localhost:8080/ui/
 
