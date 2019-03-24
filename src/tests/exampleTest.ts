@@ -1,8 +1,8 @@
 import {expect} from 'chai';
 
-describe('First suite', () => {
+describe('Example suite', () => {
 
-    it('first test', () => {
+    it('Example test', () => {
         browser.url('.');
         const isDisplayed = browser.$('.homeContainer').isDisplayed();
         expect(isDisplayed).to.be.true;
