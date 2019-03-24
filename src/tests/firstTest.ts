@@ -1,7 +1,10 @@
-describe('First', () => {
+import {expect} from 'chai';
 
-    it('fi', () => {
+describe('First suite', () => {
+
+    it('first test', () => {
         browser.url('.');
-        console.log(browser.$('.homeContainer').isDisplayed());
+        const isDisplayed = browser.$('.homeContainer').isDisplayed();
+        expect(isDisplayed).to.be.true;
     });
 });
