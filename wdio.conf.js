@@ -1,4 +1,25 @@
+const reportportal = require('wdio-reportportal-reporter');
+const RpService = require("wdio-reportportal-service");
+
 const timeout = 10000;
+
+const conf = {
+    reportPortalClientConfig: {
+        token: '306ba368-412b-4d32-b8a0-51aad0dab24b',
+        endpoint: 'http://localhost:8080/api/v1',
+        launch: 'Example_launch',
+        project: 'Example_project',
+        mode: 'DEFAULT',
+        debug: false,
+        description: "Launch description text",
+        tags: [],
+    },
+    reportSeleniumCommands: true,
+    autoAttachScreenshots: true,
+    seleniumCommandsLogLevel: 'debug',
+    screenshotsLogLevel: 'info',
+    parseTagsFromTestTitle: false,
+};
 
 exports.config = {
 
@@ -12,10 +33,10 @@ exports.config = {
     maxInstances: 10,
 
     capabilities: [
-        {
-            maxInstances: 5,
-            browserName: 'firefox',
-        },
+        // {
+        //     maxInstances: 5,
+        //     browserName: 'firefox',
+        // },
         {
             maxInstances: 5,
             browserName: 'chrome',
@@ -41,7 +62,13 @@ exports.config = {
     connectionRetryCount: 3,
 
     sync: true,
-    services: ['selenium-standalone'],
+    services: [
+        'selenium-standalone',
+        [
+            RpService,
+            {}
+        ]
+    ],
 
     // Add files to watch (e.g. application code or page objects) when running `wdio` command
     // with `--watch` flag (globbing is supported).
@@ -51,7 +78,13 @@ exports.config = {
 
     framework: 'mocha',
     // specFileRetries: 1,
-    reporters: ['dot'],
+    reporters: [
+        'dot',
+        [
+            reportportal,
+            conf
+        ]
+    ],
 
     mochaOpts: {
         ui: 'bdd',

@@ -11,6 +11,8 @@
     "@wdio/mocha-framework": "^5.7.2",
     "@wdio/selenium-standalone-service": "5.7.2",
     "@wdio/sync": "^5.7.2",
+    "wdio-reportportal-reporter": "5.0.0",
+    "wdio-reportportal-service": "5.0.0",
     "ts-node": "8.0.3",
     "tsconfig-paths": "3.8.0",
     "tslint": "5.14.0",
